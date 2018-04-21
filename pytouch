@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+
+import os, sys
+
+if len(sys.argv) < 2:
+    # Check for at least 1 argument
+    print('Argument required. Type "{} --help" for more info'.format(sys.argv[0]))
+    sys.exit()
+
+if '--help' in sys.argv:
+    hlp = '''
+    This is a script designed to automate making a python script.
+    It condenses creating and setting basic executable permissions
+    for your scripts. It will also set up your shebang at the top 
+    of your script.
+
+    basic usage is:
+
+    {} <desired_file_name> <OPTIONAL_python_version_number>
+
+    Default python version is python3
+    
+    To change version enter just the version number. 
+    ex. "3.6" or "2.7"
+
+
+
+    Thank you for using pytouch!
+    ~Adam
+    '''.format(sys.argv[0])
+
+    print(hlp)
+    sys.exit()
+
+if len(sys.argv) > 2:
+    version = sys.argv[2]
+
+else:
+    version = '3'
+
+if os.path.isfile('./{}'.format(sys.argv[1])):
+    print('File exists already!')
+    sys.exit()
+
+else:
+    os.system("touch {} && \
+            chmod 700 {} && \
+            echo '#!/usr/bin/env python{}' > {} && \
+            vi {}".format(sys.argv[1], sys.argv[1], version, sys.argv[1], sys.argv[1]))
+
