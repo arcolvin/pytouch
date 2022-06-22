@@ -28,7 +28,6 @@ if '--help' in sys.argv:
 
 
     Thank you for using pytouch!
-    ~Adam
     '''.format(sys.argv[0])
 
     print(hlp)
